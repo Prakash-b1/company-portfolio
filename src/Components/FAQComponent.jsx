@@ -10,24 +10,24 @@ export default function FAQComponent() {
 
   const faqs = [
     {
-      question: "Do you support Shopify Plus & Headless?",
-      answer: "Yes, we fully support Shopify Plus and headless commerce solutions. We use Hydrogen for frontend development and deploy on Oxygen or Vercel for optimal performance and scalability."
+      question: "What technologies and platforms do you work with?",
+      answer: "We work with modern tech stacks including React, Next.js, Node.js, Python, MongoDB, PostgreSQL, AWS, Azure, and Google Cloud. Our expertise spans web development, mobile apps (iOS/Android), cloud solutions, API development, and UI/UX design."
     },
     {
-      question: "Can you help migrate from Magento/WooCommerce?",
-      answer: "Absolutely! We specialize in seamless migrations from Magento, WooCommerce, and other platforms to Shopify. Our team handles data migration, design recreation, and functionality preservation to ensure a smooth transition with minimal downtime."
+      question: "How long does a typical project take to complete?",
+      answer: "Project timelines vary based on complexity and requirements. Simple websites take 2-4 weeks, while complex web applications or mobile apps can take 8-16 weeks. We provide detailed timelines during our discovery phase and keep you updated throughout the development process."
     },
     {
-      question: "Do you work with international brands?",
-      answer: "Yes, we work with brands globally across multiple markets and time zones. Our experience includes multi-currency setups, international shipping configurations, localization, and compliance with various regional regulations."
+      question: "Do you provide ongoing support and maintenance?",
+      answer: "Yes, we offer comprehensive post-launch support including bug fixes, security updates, performance optimization, feature enhancements, and 24/7 technical support. We provide flexible maintenance packages tailored to your specific needs."
     },
     {
-      question: "Do you handle all aspects of my store, or will I need to work with other agencies?",
-      answer: "We provide comprehensive e-commerce solutions including design, development, optimization, marketing integrations, and ongoing support. Most clients work exclusively with us, though we're happy to collaborate with your existing teams when needed."
+      question: "Can you work with our existing systems and legacy applications?",
+      answer: "Absolutely! We specialize in system integration, legacy modernization, and API development. Whether you need to upgrade existing systems, integrate new solutions, or migrate to modern platforms, our team ensures seamless transitions with minimal disruption to your operations."
     },
     {
-      question: "How do I update my billing information?",
-      answer: "You can update your billing information through your client portal, or by contacting our support team directly. We accept all major payment methods and can accommodate various billing cycles to suit your business needs."
+      question: "How do you handle project pricing and billing?",
+      answer: "We offer transparent, milestone-based pricing with no hidden costs. Projects can be billed per milestone, monthly retainers, or fixed-price contracts. We provide detailed proposals with clear breakdowns and accept various payment methods to suit your business needs."
     }
   ];
 
@@ -35,12 +35,13 @@ export default function FAQComponent() {
     <div className="min-h-screen bg-black flex items-center justify-center p-8">
       <div className="max-w-7xl w-full flex-col md:flex-row flex gap-12">
         {/* Left Section */}
-        <div className="flex flex-col justify-center text-center md:text-start  items-center md:items-start">
+        <div className="flex flex-col justify-center text-center md:text-start items-center md:items-start">
           <h1 className="text-white text-[24px] md:text-6xl font-semibold mb-2 md:mb-4">
-            Frequently Asked<br className='md:block hidden' /> Question
+            Frequently Asked<br className='md:block hidden' /> Questions
           </h1>
           <p className="text-gray-400 text-sm md:text-xl">
-            Trusted in more than 100 Brands and 4<br />million customers.
+            Trusted by 100+ businesses across<br />
+            diverse industries worldwide.
           </p>
         </div>
 

@@ -1,27 +1,21 @@
 import { useState } from 'react'
 import './App.css'
-import ABMediaFooter from './Components/ABMediaFooter'
-import ABMediaLanding from './Components/ABMediaLanding'
+import TeFooter from './Components/TeFooter'
+import TechEaseLanding from './Components/TechEaseLanding'
 import CaseStudies from './Components/Case-Studies'
-import EcommerceCarousel from './Components/EcommerceCarousel'
+import EcommerceCarousel from './Components/TechEaseServices '
 import FAQComponent from './Components/FAQComponent'
 import ForgeBrilliancePage from './Components/ForgeBrilliancePage'
-import Header from './Components/Header'
-import IconsLooper from './Components/IconsLooper'
-import Partners from './Components/Partners'
 import Phases from './Components/Phases'
-import PricingComponent from './Components/PricingComponent'
 import ServicesGrid from './Components/ServicesGrid'
-import ShopifyServicesSection from './Components/ShopifyBuildLanding'
-import ShopifyStrategyLanding from './Components/ShopifyStrategyLanding'
 import ContactForm from './Components/ContactForm'
+import TechSphere from './Components/TechSphere'
 
 function App() {
   const [showForm, setShowForm] = useState(false)
 
   return (
     <>
-      <Header />
       <button
         className="bg-[#D5FF3F] cursor-pointer md:hidden font-medium text-xl fixed z-50 w-full bottom-0 text-black px-8 py-2 hover:bg-lime-300 transition-colors"
         onClick={() => setShowForm(true)}
@@ -29,31 +23,17 @@ function App() {
         Book Strategy Call Now
       </button>
 
-      <ABMediaLanding />
-      <IconsLooper />
-      <ShopifyServicesSection />
+      <TechEaseLanding  />
+      <TechSphere/>
       <EcommerceCarousel />
-      <Partners />
-      <CaseStudies />
+      {/* <CaseStudies /> */}
       <ServicesGrid />
       <Phases />
-      <PricingComponent />
-      <ShopifyStrategyLanding />
       <ForgeBrilliancePage />
       <FAQComponent />
-      <ABMediaFooter />
+      <TeFooter />
 
-      <ContactForm
-        isPopup={true}
-        isOpen={showForm}
-        onClose={() => setShowForm(false)}
-        title="Let's Audit Your Shopify Store"
-        buttonText="Get My Audit"
-        onSubmit={(data) => {
-          console.log('form data:', data)
-          // any extra handling…
-        }}
-      />
+    
     </>
   )
 }

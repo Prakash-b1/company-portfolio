@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import {
   ChevronRight,
   ChevronLeft,
+  Code,
+  Smartphone,
+  ShoppingBag,
+  Layout,
+  CloudCog,
+  ServerCog,
+  Database,
+  LifeBuoy
 } from 'lucide-react';
 
 const cards = [
-  { id: 1, icon: '/e-com/elect.svg', title: 'ELECTRONICS' },
-  { id: 2, icon: '/e-com/fcmg.svg', title: 'FMCG' },
-  { id: 3, icon: '/e-com/heatlh.svg', title: 'HEALTH & WELLNESS' },
-  { id: 4, icon: '/e-com/home.svg', title: 'HOME & LIVING' },
-  { id: 5, icon: '/e-com/subsciption.svg', title: 'Subscription & Loyalty Brands' },
-  { id: 6, icon: '/e-com/fashion.svg', title: 'Fashion & Apparel' },
-  { id: 7, icon: '/e-com/stores.svg', title: 'Specialty Stores' },
-  { id: 8, icon: '/e-com/b2b.svg', title: 'B2B & D2C Commerce' }
+  { id: 1, icon: Code, title: 'WEB DEVELOPMENT' },
+  { id: 2, icon: Smartphone, title: 'MOBILE APPS' },
+  { id: 3, icon: ShoppingBag, title: 'E-COMMERCE SOLUTIONS' },
+  { id: 4, icon: Layout, title: 'UI/UX DESIGN' },
+  { id: 5, icon: CloudCog, title: 'CLOUD SOLUTIONS' },
+  { id: 6, icon: ServerCog, title: 'API DEVELOPMENT' },
+  { id: 7, icon: Database, title: 'CMS & PORTALS' },
+  { id: 8, icon: LifeBuoy, title: 'MAINTENANCE & SUPPORT' }
 ];
 
 const useWindowWidth = () => {
@@ -25,7 +33,7 @@ const useWindowWidth = () => {
   return width;
 };
 
-const EcommerceCarousel = () => {
+const TechEaseServices = () => {
   const width = useWindowWidth();
   const isMobile = width < 640; // Tailwind's sm breakpoint
 
@@ -38,9 +46,10 @@ const EcommerceCarousel = () => {
 
   return (
     <div
+    id='services'
       className="min-h-screen bg-black flex items-center justify-center p-3 sm:p-8 relative overflow-hidden"
       style={{
-        backgroundImage: "url('/e-com.png')",
+        backgroundImage: "url('/tech-ease-bg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat"
@@ -49,11 +58,11 @@ const EcommerceCarousel = () => {
       <div className="w-full max-w-7xl relative z-10">
         <div className="text-center mb-8 sm:mb-16">
           <h1 className="text-lg sm:text-2xl md:text-4xl font-semibold text-white mb-4 sm:mb-6 leading-snug sm:leading-tight">
-            BUILT FOR SCALE ACROSS EVERY{' '}
-            <span className="font-bold">E-COMMERCE VERTICAL</span>
+            COMPREHENSIVE TECH SOLUTIONS ACROSS{' '}
+            <span className="font-bold">EVERY DIGITAL DOMAIN</span>
           </h1>
           <p className="text-gray-400 text-sm sm:text-lg max-w-3xl mx-auto">
-            Our Shopify apps is built-finest across Fast-growing High-volume businesses.
+            Tech Ease delivers cutting-edge technology solutions for businesses of all sizes.
           </p>
         </div>
 
@@ -75,20 +84,23 @@ const EcommerceCarousel = () => {
           {isMobile ? (
             // Mobile: Show all cards in a grid
             <div className="grid grid-cols-2 gap-4 justify-items-center w-full px-2 sm:px-4">
-              {cards.map((card) => (
-                <div
-                  key={card.id}
-                  className="relative w-full justify-evenly max-w-xs md:max-w-[275px] min-w-[160px] h-auto gap-8 bg-[#1f1f1f] flex flex-col items-center pt-6 pb-8 px-4 cursor-pointer transition-transform duration-300 shadow-lg overflow-hidden"
-                >
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#A8FF00]/30 from-[-112%] to-transparent pointer-events-none" />
-                  <h3 className="text-white text-center leading-tight text-md md:text-2xl">
-                    {card.title}
-                  </h3>
-                  <div className="mb-4">
-                    <img src={card.icon} alt={card.title} className="h-[50px] md:h-24" />
+              {cards.map((card) => {
+                const IconComponent = card.icon;
+                return (
+                  <div
+                    key={card.id}
+                    className="relative w-full justify-evenly max-w-xs md:max-w-[275px] min-w-[160px] h-auto gap-8 bg-[#1f1f1f] flex flex-col items-center pt-6 pb-8 px-4 cursor-pointer transition-transform duration-300 shadow-lg overflow-hidden rounded-lg"
+                  >
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#A8FF00]/30 from-[-112%] to-transparent pointer-events-none" />
+                    <h3 className="text-white text-center leading-tight text-md md:text-2xl font-semibold">
+                      {card.title}
+                    </h3>
+                    <div className="mb-4">
+                      <IconComponent size={64} color="white" strokeWidth={1.5} />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             // Desktop: Animated carousel
@@ -106,20 +118,23 @@ const EcommerceCarousel = () => {
                   >
                     {cards
                       .slice(slideIndex * cardsPerSlide, slideIndex * cardsPerSlide + cardsPerSlide)
-                      .map((card) => (
-                        <div
-                          key={card.id}
-                          className="relative w-full justify-evenly max-w-xs md:max-w-[275px] min-w-[160px] h-auto gap-8 bg-[#1f1f1f] flex flex-col items-center pt-6 pb-8 px-4 cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg overflow-hidden"
-                        >
-                          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#A8FF00]/30 from-[-112%] to-transparent pointer-events-none" />
-                          <h3 className="text-white text-center leading-tight text-md md:text-2xl">
-                            {card.title}
-                          </h3>
-                          <div className="mb-4">
-                            <img src={card.icon} alt={card.title} className="h-[50px] md:h-24" />
+                      .map((card) => {
+                        const IconComponent = card.icon;
+                        return (
+                          <div
+                            key={card.id}
+                            className="relative w-full justify-evenly max-w-xs md:max-w-[275px] min-w-[160px] h-auto gap-8 bg-[#1f1f1f] flex flex-col items-center pt-6 pb-8 px-4 cursor-pointer transition-transform duration-300 hover:scale-105 shadow-lg overflow-hidden rounded-lg"
+                          >
+                            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#A8FF00]/30 from-[-112%] to-transparent pointer-events-none" />
+                            <h3 className="text-white text-center leading-tight text-md md:text-2xl font-semibold">
+                              {card.title}
+                            </h3>
+                            <div className="mb-4">
+                              <IconComponent size={96} color="white" strokeWidth={1.5} />
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                   </div>
                 ))}
               </div>
@@ -145,7 +160,7 @@ const EcommerceCarousel = () => {
                 key={idx}
                 onClick={() => setSlide(idx)}
                 className={`
-                  h-1 transition-all duration-300
+                  h-1 transition-all duration-300 rounded-full
                   ${idx === slide
                     ? 'w-8 md:w-16 bg-lime-400 shadow-lg shadow-lime-400/50'
                     : 'w-2 md:w-10 bg-gray-600 hover:bg-gray-500'
@@ -161,4 +176,4 @@ const EcommerceCarousel = () => {
   );
 };
 
-export default EcommerceCarousel;
+export default TechEaseServices;

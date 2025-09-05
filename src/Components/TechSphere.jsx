@@ -1,49 +1,49 @@
 import React from 'react';
-import { Zap, ShoppingCart, Sun, Clock, Brain, LifeBuoy } from 'lucide-react';
+import { Settings, TrendingUp, Cpu, LifeBuoy, Layers, ShieldCheck } from 'lucide-react';
 
-const ShopifyBuildLanding = () => {
+const TechSphere = () => {
     const features = [
         {
             id: 1,
             position: 'top',
-            title: 'Built For Scale',
-            description: 'Shopify Plus, Hydrogen, Headless, Or Custom Theme',
-            icon: '/Build-Shopify/hydrogen.svg'
+            title: 'End-to-End Solutions',
+            description: 'Web Development, Mobile Apps, E-commerce & Custom Software',
+            icon: Settings
         },
         {
             id: 2,
             position: 'top-right',
-            title: 'Conversion Engineered',
-            description: 'CRO, Heatmaps, Funnel Mapping',
-            icon: '/Build-Shopify/conversion.svg'
+            title: 'Performance Driven',
+            description: 'Fast Loading, SEO Optimized, Conversion Focused Designs',
+            icon: TrendingUp
         },
         {
             id: 3,
             position: 'right',
-            title: 'Hydrogen + Oxygen Specialists',
-            description: 'React-Based Shopify Builds Hosted On Shopify\'s Native Edge Platform',
-            icon: '/Build-Shopify/hyd2.svg'
+            title: 'Modern Tech Stack',
+            description: 'React, Node.js, Next.js, MongoDB, Advanced Cloud Solutions',
+            icon: Cpu
         },
         {
             id: 4,
             position: 'bottom-right',
-            title: 'Full Lifecycle Support',
-            description: 'Design, Development, Launch, And Growth Retainers',
-            icon: '/Build-Shopify/lifeC.svg'
+            title: '24/7 Support',
+            description: 'Development, Deployment, Maintenance & Growth Strategy',
+            icon: LifeBuoy
         },
         {
             id: 5,
             position: 'bottom-left',
-            title: 'Integrated Stack',
-            description: 'Razorpay, Shiprocket, Klaviyo, ReCharge, Gorgias, Etc.',
-            icon: '/Build-Shopify/stack.svg'
+            title: 'Integrated Ecosystem',
+            description: 'Payment Gateways, Analytics, CRM, Social Media & Third-party APIs',
+            icon: Layers
         },
         {
             id: 6,
             position: 'left',
-            title: 'Speed-Obsessed',
-            description: 'Pages Under 2s, Fully Optimized For Core Web Vitals',
-            icon: '/Build-Shopify/lifecycle.svg'
+            title: 'Quality Assured',
+            description: 'Tested Code, Security First, Scalable Architecture',
+            icon: ShieldCheck
         }
     ];
 
@@ -67,26 +67,22 @@ const ShopifyBuildLanding = () => {
                 return baseClasses;
         }
     };
-    return (
-        <div className="min-h-[100vh] bg-black flex flex-col items-center justify-center p-8">
 
+    return (
+        <div id='about' className="min-h-[100vh] bg-black flex flex-col items-center justify-center p-8">
             <div className="text-center mb-8 sm:mb-16">
                 <h1 className="text-lg sm:text-2xl md:text-4xl font-semibold text-white mb-4 sm:mb-6 leading-snug sm:leading-tight">
-                    Why Hire Us for Your Shopify Build.
+                    Why Choose Tech Ease for Your Digital Solutions?
                 </h1>
                 <p className="text-gray-400 text-sm sm:text-lg max-w-3xl mx-auto">
-                    More Than Just Development. We Engineer Growth.
+                    Making Technology Simple. Building Digital Success Stories.
                 </p>
             </div>
 
-
             <div className="relative hidden md:block">
-
                 {/* Central Circle Container */}
                 <div className="relative w-80 h-80 flex items-center justify-center">
                     <div className="absolute inset-0 -m-[46px] flex items-center justify-center pointer-events-none">
-
-
                         <svg className="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
                             <defs>
                                 <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -108,76 +104,73 @@ const ShopifyBuildLanding = () => {
                         </svg>
                     </div>
 
-
                     {/* Gradient circles */}
                     <div className="absolute inset-4 m-[-25px] rounded-full bg-gradient-to-br from-[#393939] to-[#F5F5F5]"></div>
                     <div className="absolute inset-8 m-[-15px] rounded-full bg-gradient-to-br from-[#363636] to-[#E9E9E9]"></div>
                     <div className="absolute inset-12 rounded-full bg-gradient-to-b from-[#060606] from-60% to-[#BEBEBE]"></div>
 
-                    {/* Center content */}
+                    {/* Center content - Tech Ease Logo */}
                     <div className="relative z-10 text-center">
-                        <h1 className="text-4xl font-bold text-white mb-2">ab media</h1>
+                        <img src="/Tech-Easew.png" alt="Tech Ease Logo" className='h-16 w-auto cursor-pointer' />
                     </div>
 
                     {/* Top indicator dot */}
-                    <div className="absolute -top-[53px] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white rounded-full ">
+                    <div className="absolute -top-[53px] left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white rounded-full">
                         <div className="absolute inset-0 m-auto w-5 h-5 rounded-full bg-[#C8F528] shadow-md"></div>
                     </div>
-
                 </div>
 
                 {/* Feature Cards */}
-                {features.map((feature) => (
-                    <div key={feature.id} className={getPositionClasses(feature.position)}>
-                        <div className="flex relative items-start space-x-3">
-                            <div className={`flex-1 ${feature.position.includes('right') ? 'ml-10 text-left' : 'mr-10 text-right'
-                                } `}>
-                                <h3 className="font-semibold text-lg mb-1">{feature.title}</h3>
-                                <p className="text-sm text-gray-300 leading-relaxed">{feature.description}</p>
+                {features.map((feature) => {
+                    const IconComponent = feature.icon;
+                    return (
+                        <div key={feature.id} className={getPositionClasses(feature.position)}>
+                            <div className="flex relative items-start space-x-3">
+                                <div className={`flex-1 ${feature.position.includes('right') ? 'ml-10 text-left' : 'mr-10 text-right'}`}>
+                                    <h3 className="font-semibold text-lg mb-1">{feature.title}</h3>
+                                    <p className="text-sm text-gray-300 leading-relaxed">{feature.description}</p>
+                                </div>
+                                <div
+                                    className={`absolute ${feature.position.includes('right') ? 'left-[-3rem]' : 'right-[-41px]'} w-16 h-16 rounded-full flex items-center justify-center text-lg`}
+                                    style={{ background: 'linear-gradient(180deg, #000000 0%, #7A7A7A 100%)' }}
+                                >
+                                    <IconComponent size={32} color="white" />
+                                </div>
                             </div>
-                            <div
-                                className={`absolute ${feature.position.includes('right') ? 'left-[-3rem]' : 'right-[-41px]'} w-16 h-16 rounded-full flex items-center justify-center text-lg`}
-                                style={{ background: 'linear-gradient(180deg, #000000 0%, #7A7A7A 100%)' }}
-                            >
-                                <img src={feature?.icon} alt="" className="w-8 h-8" />
-                            </div>
-
                         </div>
-                    </div>
-                ))}
-
-
-                {/* Pricing */}
+                    );
+                })}
             </div>
 
             <div className='md:hidden relative space-y-6'>
-                {features.map((feature) => (
-                    <div key={feature.id} className=" p-4 bg-[#272727] text-white ">
-                        <div className="flex relative items-start space-x-3">
-                            <div className={`flex-1  ml-6`}>
-                                <h3 className="font-semibold text-md mb-1">{feature.title}</h3>
-                                <p className="text-sm text-gray-300 leading-relaxed">{feature.description}</p>
+                {features.map((feature) => {
+                    const IconComponent = feature.icon;
+                    return (
+                        <div key={feature.id} className="p-4 bg-[#272727] text-white rounded-lg">
+                            <div className="flex relative items-start space-x-3">
+                                <div className={`flex-1 ml-6`}>
+                                    <h3 className="font-semibold text-md mb-1">{feature.title}</h3>
+                                    <p className="text-sm text-gray-300 leading-relaxed">{feature.description}</p>
+                                </div>
+                                <div
+                                    className={`absolute left-[-45px] w-16 h-16 rounded-full flex items-center justify-center text-lg`}
+                                    style={{ background: 'linear-gradient(180deg, #000000 0%, #7A7A7A 100%)' }}
+                                >
+                                    <IconComponent size={32} color="white" />
+                                </div>
                             </div>
-                            <div
-                                className={`absolute left-[-45px]  w-16 h-16 rounded-full flex items-center justify-center text-lg`}
-                                style={{ background: 'linear-gradient(180deg, #000000 0%, #7A7A7A 100%)' }}
-                            >
-                                <img src={feature?.icon} alt="" className="w-8 h-8" />
-                            </div>
-
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
+
             <div className="mt-14 md:block hidden">
                 <p className="text-gray-400 text-lg">
-                    Starting At <span className="text-white font-bold text-xl">₹99,999 + GST For Full Shopify Builds </span>.
+                    Starting At <span className="text-white font-bold text-xl">₹25,000 + GST For Complete Digital Solutions</span>.
                 </p>
             </div>
         </div>
     );
 };
 
-
-
-export default ShopifyBuildLanding;
+export default TechSphere;

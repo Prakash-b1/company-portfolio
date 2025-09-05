@@ -8,57 +8,57 @@ import {
 const testimonials = [
   {
     id: 1,
-    name: 'Lana Steiner',
-    role: 'Deputy General Manager',
-    company: 'Shopify Plus',
+    name: 'Rajesh Sharma',
+    role: 'Chief Technology Officer',
+    company: 'InnovateHub',
     rating: 5,
-    text: `'"We've worked with 3 agencies before this — no one matched AB Moeller clarity on conversion design."'`,
-    avatar: 'LS'
+    text: `"Tech Ease transformed our legacy system into a modern, scalable solution. Their expertise in cloud migration saved us months of development time."`,
+    avatar: 'RS'
   },
   {
     id: 2,
-    name: 'Ben Van Heurmann',
-    role: 'Managing Director',
-    company: 'Shopify Plus',
+    name: 'Priya Patel',
+    role: 'Founder & CEO',
+    company: 'StartupVentures',
     rating: 5,
-    text: '"Hardtimes + Shopify Plus setup from them helped us bring CR from 1.8% to 3.7%. Worth every rupee."',
-    avatar: 'BH'
+    text: '"From concept to deployment, Tech Ease delivered exceptional results. Our mobile app reached 10K+ downloads within the first month."',
+    avatar: 'PP'
   },
   {
     id: 3,
-    name: 'Philip Debbono',
-    role: 'Senior Vice President',
-    company: 'Shopify Plus',
+    name: 'Michael Rodriguez',
+    role: 'Head of Digital',
+    company: 'TechCorp Solutions',
     rating: 5,
-    text: '"AB Media doesn\'t just build stores. They build sales machines."',
-    avatar: 'PD'
+    text: '"Tech Ease doesn\'t just build applications. They build digital experiences that drive business growth."',
+    avatar: 'MR'
   },
   {
     id: 4,
-    name: 'Sarah Johnson',
-    role: 'Marketing Director',
-    company: 'E-commerce Pro',
+    name: 'Anita Singh',
+    role: 'Product Manager',
+    company: 'DigitalFirst',
     rating: 5,
-    text: '"The team delivered beyond expectations. Our conversion rates improved by 250% within the first month."',
-    avatar: 'SJ'
+    text: '"Outstanding web development services. They delivered a responsive, fast-loading website that increased our conversion rate by 180%."',
+    avatar: 'AS'
   },
   {
     id: 5,
-    name: 'Michael Chen',
-    role: 'Founder & CEO',
-    company: 'Tech Solutions',
+    name: 'David Thompson',
+    role: 'Director of Operations',
+    company: 'CloudTech Inc',
     rating: 5,
-    text: '"Professional, efficient, and results-driven. They transformed our online presence completely."',
-    avatar: 'MC'
+    text: '"Professional team with deep technical expertise. Their API integration work streamlined our entire business process."',
+    avatar: 'DT'
   },
   {
     id: 6,
-    name: 'Emma Williams',
-    role: 'Head of Operations',
-    company: 'Digital Commerce',
+    name: 'Kavya Mehta',
+    role: 'Marketing Head',
+    company: 'GrowthLabs',
     rating: 5,
-    text: '"Outstanding work quality and attention to detail. Highly recommend their services."',
-    avatar: 'EW'
+    text: '"Tech Ease created a beautiful, user-friendly interface that our customers love. Highly recommend their UI/UX design services."',
+    avatar: 'KM'
   }
 ];
 
@@ -91,7 +91,7 @@ const TestimonialsCarousel = () => {
         <Star
           key={i}
           size={16}
-          className={`${i < rating ? 'fill-blue-500 text-blue-500' : 'text-gray-300'}`}
+          className={`${i < rating ? 'fill-lime-500 text-lime-500' : 'text-gray-300'}`}
         />
       ))}
     </div>
@@ -111,14 +111,15 @@ const TestimonialsCarousel = () => {
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-            TESTIMONIALS
+            CLIENT SUCCESS STORIES
           </h1>
+          <p className="text-gray-400 text-lg">What Our Clients Say About Tech Ease</p>
         </div>
 
         {/* Navigation Arrows */}
         <button
           onClick={goPrev}
-          className="md:block absolute hidden left-2 sm:left-6 top-[16rem] -translate-y-1/2 bg-white text-black p-2 sm:p-3 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-110 shadow-lg z-10"
+          className="md:block absolute hidden left-2 sm:left-6 top-[16rem] -translate-y-1/2 bg-lime-400 text-black p-2 sm:p-3 rounded-full hover:bg-lime-300 transition-all duration-300 hover:scale-110 shadow-lg z-10"
           aria-label="Previous testimonials"
         >
           <ChevronLeft size={24} />
@@ -126,7 +127,7 @@ const TestimonialsCarousel = () => {
 
         <button
           onClick={goNext}
-          className="md:block absolute hidden right-2 sm:right-6 top-[16rem] -translate-y-1/2 bg-white text-black p-2 sm:p-3 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-110 shadow-lg z-10"
+          className="md:block absolute hidden right-2 sm:right-6 top-[16rem] -translate-y-1/2 bg-lime-400 text-black p-2 sm:p-3 rounded-full hover:bg-lime-300 transition-all duration-300 hover:scale-110 shadow-lg z-10"
           aria-label="Next testimonials"
         >
           <ChevronRight size={24} />
@@ -153,7 +154,7 @@ const TestimonialsCarousel = () => {
                     .map((testimonial) => (
                       <div
                         key={testimonial.id}
-                        className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 min-h-[280px] flex flex-col"
+                        className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 min-h-[280px] flex flex-col"
                       >
                         <StarRating rating={testimonial.rating} />
                         
@@ -170,7 +171,7 @@ const TestimonialsCarousel = () => {
                             <p className="text-gray-600 text-xs">
                               {testimonial.role}
                             </p>
-                            <p className="text-blue-600 text-xs font-medium">
+                            <p className="text-lime-600 text-xs font-medium">
                               {testimonial.company}
                             </p>
                           </div>
@@ -190,9 +191,9 @@ const TestimonialsCarousel = () => {
               key={idx}
               onClick={() => setSlide(idx)}
               className={`
-                h-1 transition-all duration-300
+                h-1 transition-all duration-300 rounded-full
                 ${idx === slide
-                  ? 'w-8 md:w-16 bg-white shadow-lg'
+                  ? 'w-8 md:w-16 bg-lime-400 shadow-lg shadow-lime-400/50'
                   : 'w-2 md:w-10 bg-gray-600 hover:bg-gray-400'
                 }
               `}
