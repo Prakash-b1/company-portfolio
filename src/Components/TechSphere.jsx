@@ -74,9 +74,9 @@ const TechSphere = () => {
                 <h1 className="text-lg sm:text-2xl md:text-4xl font-semibold text-white mb-4 sm:mb-6 leading-snug sm:leading-tight">
                     Why Choose Tech Ease for Your Digital Solutions?
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-lg max-w-3xl mx-auto">
+                {/* <p className="text-gray-400 text-sm sm:text-lg max-w-3xl mx-auto">
                     Making Technology Simple. Building Digital Success Stories.
-                </p>
+                </p> */}
             </div>
 
             <div className="relative hidden md:block">
@@ -164,11 +164,7 @@ const TechSphere = () => {
                 })}
             </div>
 
-            <div className="mt-14 md:block hidden">
-                <p className="text-gray-400 text-lg">
-                    Starting At <span className="text-white font-bold text-xl">₹25,000 + GST For Complete Digital Solutions</span>.
-                </p>
-            </div>
+          
         </div>
     );
 };

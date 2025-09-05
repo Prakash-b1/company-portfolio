@@ -1,33 +1,35 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const caseStudies = [
   {
     id: 1,
-    video: '/case-studies/arahul.mp4',
-    poster: '/case-studies/arahul.png',
-    title: 'Arohul',
-    desc: `Migrated to Shopify, built conversion-focused funnel → Result: 7X ROAS with Shopify + Meta + WhatsApp in < 90 days`,
+    poster: '/case-studies/sunstar.png',
+    title: 'Sunstar Hotel',
+    desc: `A complete hotel website with frontend + backend management system. Integrated payment gateway and room booking system for smooth guest experience.`,
   },
   {
     id: 2,
-    video: '/case-studies/bythenature.mp4',
-    poster: '/case-studies/bythenature.png',
-    title: 'By The Nature',
-    desc: `Shopify theme + UGC integration + WhatsApp COD flows → Result: 42% CR improvement within 6 weeks of relaunch`,
+    poster: '/case-studies/Orebi.png',
+    title: 'Orebi E-Commerce',
+    desc: `An online shopping website where users can browse and purchase products. Built with scalable e‑commerce features including cart, checkout, and payment flow.`,
   },
   {
     id: 3,
-    video: '/case-studies/mahajan.mp4',
-    poster: '/case-studies/mahajan.png',
-    title: 'Mahajan Electronics',
-    desc: `Full redesign + Razorpay/Shiprocket integration + retargeting setup + ZipCode Validator → Result: ₹10 Lakh+ generated in a single month, Meta ROAS scaled 15X`,
+    poster: '/case-studies/Chawla.png',
+    title: 'Chawla Building Materials',
+    desc: `A business website for home construction and building materials. Visitors can explore a wide range of products and services for their projects.`,
   },
   {
     id: 4,
-    video: '/case-studies/juhi-nanda.mp4',
-    poster: '/case-studies/juhi-nanda.png',
-    title: 'Juhi Nanda',
-    desc: `Shopify + Interakt + bundled offers + checkout optimization → Result: 5.6X blended ROAS, COD failure reduced by 27%`,
+    poster: '/case-studies/pingsy.png',
+    title: 'Pingsy CRM',
+    desc: `A WhatsApp-based CRM platform to manage customer interactions—live chats, broadcasts, and WhatsApp template campaigns for businesses.`,
+  },
+  {
+    id: 5,
+    poster: '/case-studies/hostel.png',
+    title: 'Hostel Wale Bhaiya',
+    desc: `A student-focused website for hostel inquiries. Users can discover, compare, and request details about hostels in their desired area.`,
   },
 ];
 
@@ -39,49 +41,13 @@ function toPoster(videoSrc, ext = 'png') {
 }
 
 /** ▶️ LazyVideo: shows image until video is ready; parent controls play/pause */
-const LazyVideo = ({ src, poster, onVideoLoad, alt = 'Case study preview', ...props }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+const LazyVideo = ({ src, poster, alt = 'Case study preview'}) => {
   const [posterSrc, setPosterSrc] = useState(() => poster || toPoster(src));
-  const triedJpgRef = useRef(false);
-  const videoRef = useRef(null);
 
   // reset when src/poster changes
   useEffect(() => {
     setPosterSrc(poster || toPoster(src));
-    setIsLoading(true);
-    setHasError(false);
   }, [src, poster]);
-
-  // mark ready when video can actually play
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleReady = () => {
-      setIsLoading(false);
-      video.playbackRate = 1;
-      onVideoLoad && onVideoLoad(video);
-    };
-
-    const handleError = () => {
-      setIsLoading(false);
-      setHasError(true);
-      console.error('Video loading failed:', src);
-    };
-
-    video.addEventListener('loadeddata', handleReady);
-    video.addEventListener('canplaythrough', handleReady);
-    video.addEventListener('playing', handleReady);
-    video.addEventListener('error', handleError);
-
-    return () => {
-      video.removeEventListener('loadeddata', handleReady);
-      video.removeEventListener('canplaythrough', handleReady);
-      video.removeEventListener('playing', handleReady);
-      video.removeEventListener('error', handleError);
-    };
-  }, [src, onVideoLoad]);
 
   return (
     <div className="relative w-full h-[280px] bg-gray-900 rounded overflow-hidden">
@@ -89,90 +55,15 @@ const LazyVideo = ({ src, poster, onVideoLoad, alt = 'Case study preview', ...pr
       <img
         src={posterSrc}
         alt={alt}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-100' : 'opacity-0'
-          }`}
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
         loading="lazy"
         decoding="async"
-        onError={() => {
-          // try .jpg if .png missing
-          if (!triedJpgRef.current) {
-            triedJpgRef.current = true;
-            setPosterSrc(poster ? poster.replace(/\.[^/.]+$/, '.jpg') : toPoster(src, 'jpg'));
-          }
-        }}
-        aria-hidden={isLoading ? 'false' : 'true'}
       />
-
-      {/* Actual video */}
-      <video
-        ref={videoRef}
-        src={src}
-        poster={posterSrc}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'
-          }`}
-        // No autoplay — parent triggers play on hover/touch
-        muted
-        loop
-        playsInline
-        preload="auto"
-        disableRemotePlayback
-        {...props}
-      />
-
-      {/* Optional tiny error badge */}
-      {hasError && (
-        <div className="absolute bottom-2 right-2 px-2 py-1 text-xs rounded bg-black/60 text-red-300">
-          Video failed to load
-        </div>
-      )}
     </div>
   );
 };
 
 const CaseStudies = () => {
-  const videoRefs = useRef([]);
-
-  const handleVideoLoad = (videoElement, index) => {
-    if (videoElement) {
-      videoElement.playbackRate = 1;
-      videoRefs.current[index] = videoElement;
-    }
-  };
-
-  const setSpeed = (video, rate) => {
-    if (!video) return;
-    const target = Math.min(Math.max(rate, 0.25), 2); // clamp
-    // apply even if not fully ready; browser will respect once ready
-    video.playbackRate = target;
-  };
-
-  // pause others, keep only one active
-  const focusOne = (idx) => {
-    videoRefs.current.forEach((v, i) => {
-      if (!v) return;
-      if (i !== idx) {
-        v.pause();
-        v.playbackRate = 1;
-      }
-    });
-  };
-
-  const playOn = (index) => {
-    const v = videoRefs.current[index];
-    if (!v) return;
-    focusOne(index);
-    v.muted = true; // instant play
-    v.play().catch(() => { });
-    setSpeed(v, 6); // a bit faster on hover
-  };
-
-  const pauseOff = (index) => {
-    const v = videoRefs.current[index];
-    if (!v) return;
-    v.pause();
-    setSpeed(v, 1);
-  };
-
   return (
     <section
       className="py-16 px-4"
@@ -185,30 +76,18 @@ const CaseStudies = () => {
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center text-white text-4xl font-light tracking-widest mb-12">
-          <span className="opacity-60">CASE</span>{' '}
-          <span className="font-bold">STUDIES</span>
+          <span className="opacity-60">PROJECTS</span>{' '}
+          <span className="font-bold">SHOWCASE</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 md:gap-y-8">
           {caseStudies.map((item, index) => (
             <div
               key={item.id}
-              className={`relative group transition-transform duration-300 hover:-translate-y-2 ${index % 2 === 0 ? 'md:mt-0' : 'md:mt-28'
-                }`}
+              className={`relative group transition-transform duration-300 hover:-translate-y-2 ${
+                index % 2 === 0 ? 'md:mt-0' : 'md:mt-28'
+              }`}
             >
-              {/* ===== MOBILE: only video (autoplay) ===== */}
-              <div className="block md:hidden">
-                <video
-                  src={item.video}
-                  className="w-full "
-                  autoPlay
-                  muted
-                  playsInline
-                  loop
-                  preload="auto"
-                />
-              </div>
-              
               {/* ===== DESKTOP: current laptop UI ===== */}
               <div className="">
                 {/* Laptop Container */}
@@ -218,25 +97,8 @@ const CaseStudies = () => {
                     {/* Laptop Screen Bezel */}
                     <div className="bg-black rounded-lg p-2 relative overflow-hidden">
                       {/* Video Content */}
-                      <div
-                        className="relative"
-                        onPointerEnter={(e) => {
-                          if (e.pointerType === 'touch') return;
-                          playOn(index);
-                        }}
-                        onPointerLeave={(e) => {
-                          if (e.pointerType === 'touch') return;
-                          pauseOff(index);
-                        }}
-                        onTouchStart={() => playOn(index)}
-                        onTouchEnd={() => pauseOff(index)}
-                        onTouchCancel={() => pauseOff(index)}
-                      >
-                        <LazyVideo
-                          src={item.video}
-                          poster={item.poster}
-                          onVideoLoad={(video) => handleVideoLoad(video, index)}
-                        />
+                      <div className="relative">
+                        <LazyVideo poster={item.poster} />
                       </div>
                     </div>
 
@@ -261,7 +123,6 @@ const CaseStudies = () => {
               </div>
             </div>
           ))}
-
         </div>
       </div>
     </section>

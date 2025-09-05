@@ -25,8 +25,8 @@ function App() {
 
       <TechEaseLanding  />
       <TechSphere/>
-      <EcommerceCarousel />
-      {/* <CaseStudies /> */}
+      {/* <EcommerceCarousel /> */}
+      <CaseStudies />
       <ServicesGrid />
       <Phases />
       <ForgeBrilliancePage />
