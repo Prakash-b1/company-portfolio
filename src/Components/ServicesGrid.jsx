@@ -1,12 +1,12 @@
 import React from 'react';
 import PopupButton from './PopupButton';
-import { 
-    Code, 
-    Smartphone, 
-    Cloud, 
-    Server, 
-    Layout, 
-    LifeBuoy 
+import {
+    Code,
+    Smartphone,
+    Cloud,
+    Server,
+    Layout,
+    LifeBuoy
 } from 'lucide-react';
 
 const services = [
@@ -53,7 +53,7 @@ const ServiceCard = ({ title, subtitle, icon: IconComponent }) => (
         {/* top overlapping circle with icon */}
         <div className="absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2">
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#27272d] rounded-full flex items-center justify-center shadow-md">
-                <IconComponent 
+                <IconComponent
                     size={24}
                     color="white"
                     strokeWidth={1.5}
@@ -78,7 +78,7 @@ const ServiceCard = ({ title, subtitle, icon: IconComponent }) => (
 );
 
 const ServicesGrid = () => (
-    <section className="py-12 sm:py-16 bg-black">
+    <section className="py-12 sm:py-16 bg-black" id='services'>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
             {/* Header */}
             <h2 className="text-center text-white text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide sm:tracking-widest mb-8 sm:mb-12 px-4">
@@ -89,11 +89,11 @@ const ServicesGrid = () => (
             {/* Services Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
                 {services.map(service => (
-                    <ServiceCard 
-                        key={service.key} 
-                        title={service.title} 
-                        subtitle={service.subtitle} 
-                        icon={service.icon} 
+                    <ServiceCard
+                        key={service.key}
+                        title={service.title}
+                        subtitle={service.subtitle}
+                        icon={service.icon}
                     />
                 ))}
             </div>
